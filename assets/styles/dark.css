@@ -1,0 +1,34 @@
+window {
+    background-color: #202020;
+}
+
+label {
+    color: white;
+}
+
+.start-button {
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+.start-button:hover {
+    background-color: #3a3a3a;
+}
+
+.clock {
+    color: white;
+    padding: 0 12px;
+}
+
+.workspace-button {
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    padding: 4px 10px;
+}
+
+.workspace-button:hover {
+    background-color: #3a3a3a;
+}

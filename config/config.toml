@@ -1,0 +1,4 @@
+[taskbar]
+position = "top"
+height = 40
+theme = "dark"
