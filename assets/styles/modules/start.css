@@ -44,73 +44,128 @@
     box-shadow: 0 0 8px rgba(137, 180, 250, 0.3);
 }
 
-/* --- Popover --- */
+/* Popover Utama */
 popover.start-popover > contents {
-    background-color: #1e1e2e;
-    border-radius: 14px;
-    border: 1px solid #45475a;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    background-color: #1e1e2e; /* Base Catppuccin */
+    border-radius: 16px;
+    border: 1px solid #45475a; /* Surface1 */
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
     padding: 16px;
 }
 
-.start-popup-box {
-    background-color: transparent;
+/* Header Profil */
+.start-profile-box {
+    background-color: #313244; /* Surface0 */
+    border-radius: 10px;
+    padding: 8px 12px;
 }
 
-.power-footer-box {
-    margin-top: 0;
-    padding-top: 12px;
-    border-top: 1px solid rgba(69, 71, 90, 0.8);
+.start-avatar {
+    font-size: 20px;
+    color: #89b4fa; /* Blue */
 }
 
-/* --- Application List --- */
-.app-row-item {
-    padding: 6px 10px;
-    border-radius: 7px;
+.start-username {
+    color: #cdd6f4; /* Text */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.start-avatar-img {
+    border-radius: 50%;
+    min-width: 36px;
+    min-height: 36px;
+    border: 1px solid rgba(137, 180, 250, 0.8);
+}
+
+/* Search Bar */
+.start-search-entry {
+    background-color: #313244;
     color: #cdd6f4;
-    transition: 150ms ease-in-out;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 8px 12px;
 }
 
+.start-search-entry:focus {
+    border-color: #89b4fa;
+    background-color: #11111b;
+}
+
+/* List Item Aplikasi */
+.app-row-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #cdd6f4;
+    transition: 150ms;
+}
+
+/* Efek saat kursor diarahkan ke baris aplikasi */
 .app-row-item:hover {
-    background-color: rgba(137, 180, 250, 0.2);
+    background-color: rgba(137, 180, 250, 0.2); /* Warna blue transparan khas Catppuccin */
     color: #89b4fa;
+    border-radius: 8px;
 }
 
-listboxrow {
-    background: transparent;
-    border: none;
-    padding: 2px 0;
+/* Efek saat baris aplikasi dipilih (baik pakai mouse maupun keyboard/panah) */
+.app-list-box row:selected {
+    background-color: rgba(137, 180, 250, 0.25);
+    color: #89b4fa;
+    border-radius: 8px;
 }
 
-.app-row-item image {
-    -gtk-icon-size: 18px;
-}
-
-.app-row-item label {
-    font-size: 12px;
-}
-
-/* --- Power Footer --- */
-.power-footer-box {
-    margin-top: 0;
-    padding-top: 10px;
-    border-top: 1px solid rgba(69, 71, 90, 0.8);
+.app-list-box row:selected .app-row-item {
+    color: #89b4fa;
 }
 
 /* --- Power Buttons --- */
 .power-btn {
-    background-color: rgba(49, 50, 68, 0.7);
-    color: #a6adc8;
-    border: 1px solid rgba(88, 91, 112, 0.4);
-    border-radius: 6px;
-    padding: 5px 0;
-    font-size: 13px;
-    min-height: 28px;
-    transition: 150ms ease-in-out;
+    background: linear-gradient(135deg, #2a2d34 0%, #1e2025 100%); /* Efek gradasi ala logam gelap */
+    border: 1px solid #3d424d;   /* Border metalik */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 200ms ease;
 }
 
-.power-btn:hover {
-    background-color: #f38ba8;
-    color: #11111b;
-    border-color: #f38ba8;
+/* 1. Tombol Lock (Aksen Silver/Metallic Steel) */
+.power-btn-lock {
+    color: #9ba1b0;
+}
+.power-btn-lock:hover {
+    background: linear-gradient(135deg, #323742, #24272e);
+    border-color: #6c758d;
+    color: #ffffff;
+}
+
+/* 2. Tombol Suspend / Bulan (Aksen Silver Warm) */
+.power-btn-suspend {
+    color: #9ba1b0;
+}
+.power-btn-suspend:hover {
+    background: linear-gradient(135deg, #323742, #24272e);
+    border-color: #6c758d;
+    color: #ffffff;
+}
+
+/* 3. Tombol Logout / Keluar (Aksen Silver) */
+.power-btn-logout {
+    color: #9ba1b0;
+}
+.power-btn-logout:hover {
+    background: linear-gradient(135deg, #323742, #24272e);
+    border-color: #6c758d;
+    color: #ffffff;
+}
+
+/* 4. Tombol Power Off / Shutdown (Aksen Merah Metalik/Anodized Red) */
+.power-btn-shutdown {
+    color: #d1495b; /* Merah metalik yang lebih gelap dan elegan */
+}
+.power-btn-shutdown:hover {
+    background: linear-gradient(135deg, #3d2228, #26161a);
+    border-color: #d1495b;
+    color: #ff6b7b;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 0 8px rgba(209, 73, 91, 0.3);
 }
