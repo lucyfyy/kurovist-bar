@@ -1,50 +1,61 @@
 use gtk4::prelude::*;
 use gtk4::{Box, Button, Orientation};
+use std::cell::RefCell;
+use std::rc::Rc;
 
+/// Struct penampung widget workspace.
+/// Menggunakan `Rc<RefCell<...>>` agar aman di-clone dan di-update
+/// dari closure event loop GTK4.
+#[derive(Clone)]
 pub struct WorkspaceWidget {
     pub container: Box,
-    pub buttons: Vec<Button>,
+    pub buttons: Rc<RefCell<Vec<Button>>>,
 }
 
 impl WorkspaceWidget {
-    pub fn new(workspaces: Vec<i32>) -> Self {
+    /// Inisialisasi widget workspace awal
+    pub fn new(workspaces: Vec<i32>, active_id: i32) -> Self {
         let container = Box::new(Orientation::Horizontal, 5);
 
-        let mut widget = Self {
+        let widget = Self {
             container,
-            buttons: Vec::new(),
+            buttons: Rc::new(RefCell::new(Vec::new())),
         };
 
-        for id in workspaces {
-            widget.add_workspace(id);
-        }
-
+        widget.update(workspaces, active_id);
         widget
     }
 
-    fn add_workspace(&mut self, id: i32) {
+    /// Membuat 1 tombol workspace dan memasangkan CSS class sekaligus
+    fn add_workspace(&self, id: i32, active_id: i32) {
         let button = Button::with_label(&id.to_string());
 
-        button.set_css_classes(&["workspace-button"]);
+        // Kunci Perbaikan: Pasang class 'workspace-button' dan 'active' dalam 1 array sekaligus!
+        let mut classes = vec!["workspace-button"];
+        if id == active_id {
+            classes.push("active");
+        }
+        button.set_css_classes(&classes);
 
+        // Click handler ke Hyprland dispatcher
         button.connect_clicked(move |_| {
             crate::platform::hyprland::command::workspace(id);
         });
 
         self.container.append(&button);
-
-        self.buttons.push(button);
+        self.buttons.borrow_mut().push(button);
     }
 
-    pub fn update(&mut self, workspaces: Vec<i32>) {
-        let old_buttons = std::mem::take(&mut self.buttons);
+    /// Merender ulang seluruh tombol workspace saat ada event Hyprland masuk
+    pub fn update(&self, workspaces: Vec<i32>, active_id: i32) {
+        let old_buttons = std::mem::take(&mut *self.buttons.borrow_mut());
 
         for button in old_buttons {
             self.container.remove(&button);
         }
 
         for id in workspaces {
-            self.add_workspace(id);
+            self.add_workspace(id, active_id);
         }
     }
 }

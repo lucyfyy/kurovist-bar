@@ -1,32 +1,26 @@
-use gtk4::Label;
-use gtk4::prelude::*;
 use chrono::Local;
-use glib::timeout_add_seconds_local;
+use glib::ControlFlow;
+use gtk4::prelude::*;
+use gtk4::Label;
+use std::time::Duration;
 
 pub fn create() -> Label {
-    let label = Label::new(None);
+    let clock_label = Label::new(None);
+    clock_label.add_css_class("clock-label");
 
-    update(&label);
+    update_clock_label(&clock_label);
 
-    let label_clone = label.clone();
-
-    timeout_add_seconds_local(1, move || {
-        update(&label_clone);
-
-        glib::ControlFlow::Continue
+    let label_clone = clock_label.clone();
+    glib::timeout_add_local(Duration::from_millis(1000), move || {
+        update_clock_label(&label_clone);
+        ControlFlow::Continue
     });
 
-    label
-        .set_css_classes(&["clock"]);
-
-    label
+    clock_label
 }
 
-
-fn update(label: &Label) {
+fn update_clock_label(label: &Label) {
     let now = Local::now();
-
-    label.set_text(
-        &now.format("%H:%M:%S").to_string()
-    );
+    let formatted = now.format("%H:%M:%S").to_string(); // Format jam murni
+    label.set_text(&formatted);
 }

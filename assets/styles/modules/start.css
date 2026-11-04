@@ -1,0 +1,116 @@
+
+.start-container {
+    background-color: transparent;
+    padding: 2px;
+}
+
+/* --- Start Button --- */
+.start-button {
+    background: transparent;
+    color: var(--accent, #89b4fa);
+    font-size: 16px;
+    padding: 2px 10px;
+    margin: 2px 4px;
+    border: none;
+    border-radius: var(--border-radius-button, 6px);
+    transition: var(--transition-fast, all 150ms ease-in-out);
+}
+
+.start-button:hover {
+    background-color: var(--hover-bg, rgba(255, 255, 255, 0.12));
+    color: #b4befe;
+    box-shadow: 0 0 10px rgba(137, 180, 250, 0.25);
+}
+
+.start-button:active {
+    background-color: var(--accent, #89b4fa);
+    color: #11111b;
+}
+
+/* --- Search Bar --- */
+.start-search-entry {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 6px;
+    font-size: 13px;
+    min-width: 150px;
+    padding: 4px 8px;
+    transition: 150ms ease-in-out;
+}
+
+.start-search-entry:focus {
+    border-color: #89b4fa;
+    box-shadow: 0 0 8px rgba(137, 180, 250, 0.3);
+}
+
+/* --- Popover --- */
+popover.start-popover > contents {
+    background-color: #1e1e2e;
+    border-radius: 14px;
+    border: 1px solid #45475a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    padding: 16px;
+}
+
+.start-popup-box {
+    background-color: transparent;
+}
+
+.power-footer-box {
+    margin-top: 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(69, 71, 90, 0.8);
+}
+
+/* --- Application List --- */
+.app-row-item {
+    padding: 6px 10px;
+    border-radius: 7px;
+    color: #cdd6f4;
+    transition: 150ms ease-in-out;
+}
+
+.app-row-item:hover {
+    background-color: rgba(137, 180, 250, 0.2);
+    color: #89b4fa;
+}
+
+listboxrow {
+    background: transparent;
+    border: none;
+    padding: 2px 0;
+}
+
+.app-row-item image {
+    -gtk-icon-size: 18px;
+}
+
+.app-row-item label {
+    font-size: 12px;
+}
+
+/* --- Power Footer --- */
+.power-footer-box {
+    margin-top: 0;
+    padding-top: 10px;
+    border-top: 1px solid rgba(69, 71, 90, 0.8);
+}
+
+/* --- Power Buttons --- */
+.power-btn {
+    background-color: rgba(49, 50, 68, 0.7);
+    color: #a6adc8;
+    border: 1px solid rgba(88, 91, 112, 0.4);
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 13px;
+    min-height: 28px;
+    transition: 150ms ease-in-out;
+}
+
+.power-btn:hover {
+    background-color: #f38ba8;
+    color: #11111b;
+    border-color: #f38ba8;
+}

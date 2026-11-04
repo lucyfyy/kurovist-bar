@@ -1,0 +1,6 @@
+:root {
+    --font-main: "JetBrainsMono Nerd Font", monospace;
+    --border-radius-widget: 8px;
+    --border-radius-button: 6px;
+    --transition-fast: all 150ms ease-in-out;
+}

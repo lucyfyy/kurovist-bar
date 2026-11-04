@@ -1,35 +1,13 @@
-use std::env;
-use std::io::Write;
-use std::os::unix::net::UnixStream;
+use std::process::Command;
 
-
-pub fn dispatch(command: &str) {
-    let signature = env::var("HYPRLAND_INSTANCE_SIGNATURE")
-        .expect("HYPRLAND_INSTANCE_SIGNATURE missing");
-
-    let runtime = env::var("XDG_RUNTIME_DIR")
-        .expect("XDG_RUNTIME_DIR missing");
-
-    let socket = format!(
-        "{}/hypr/{}/.socket.sock",
-        runtime,
-        signature
-    );
-
-    let mut stream = UnixStream::connect(socket)
-        .expect("Failed connect Hyprland command socket");
-
-    stream
-        .write_all(command.as_bytes())
-        .expect("Failed send command");
+pub fn dispatch(lua_cmd: &str) {
+    let _ = Command::new("hyprctl")
+        .args(["dispatch", lua_cmd])
+        .spawn();
 }
 
-
 pub fn workspace(id: i32) {
-    let command = format!(
-        "dispatch workspace {}",
-        id
-    );
-
-    dispatch(&command);
+    // Memformat perintah dispatch sesuai sintaks Lua API Hyprland: hl.dsp.focus({ workspace = "id" })
+    let lua_cmd = format!("hl.dsp.focus({{ workspace = \"{}\" }})", id);
+    dispatch(&lua_cmd);
 }

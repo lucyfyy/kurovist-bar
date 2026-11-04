@@ -1,5 +1,6 @@
 mod app;
 mod config;
+mod modules;
 mod platform;
 mod shell;
 mod state;

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Bar Base Container (`assets/styles/base/window.css`)
+   ========================================================================== */
+
+window.main-window {
+    background-color: transparent;
+}
+
+.bar-container {
+    background-color: var(--bar-bg, rgba(24, 24, 37, 0.85));
+    padding: 2px 8px;
+}
+
+.left-box, .right-box {
+    margin: 0;
+    padding: 0;
+}

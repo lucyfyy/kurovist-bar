@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Workspace Module Styles (`assets/styles/modules/workspace.css`)
+   ========================================================================== */
+
+/* 1. Container kapsul pembungkus seluruh tombol workspace */
+#workspace, 
+.workspace-box {
+    background-color: var(--widget-bg, rgba(30, 30, 46, 0.75));
+    border-radius: var(--border-radius-widget, 8px);
+    padding: 3px 6px;
+    margin: 2px 4px;
+}
+
+/* 2. Base Style untuk tombol workspace (Inaktif / Redup) */
+button.workspace-button {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: var(--text-dim, #6c7086);
+    border-radius: var(--border-radius-button, 6px);
+    padding: 3px 12px;
+    margin: 0 2px;
+    border: none;
+    font-family: var(--font-main, "JetBrainsMono Nerd Font", monospace);
+    font-size: 13px;
+    font-weight: bold;
+    transition: var(--transition-fast, all 150ms ease-in-out);
+}
+
+/* 3. Efek saat kursor mouse di-hover */
+button.workspace-button:hover {
+    background-color: var(--hover-bg, rgba(255, 255, 255, 0.12));
+    color: var(--text-main, #cdd6f4);
+}
+
+/* 4. ACTIVE WORKSPACE (Kapsul Biru Terang Solid + Teks Hitam Kontras) */
+button.workspace-button.active {
+    background-color: rgba(137, 180, 250, 0.25); /* Biru transparan lebih padat */
+    color: #89b4fa;                               /* Angka ikut warna biru aksen */
+    border: 1px solid rgba(137, 180, 250, 0.4);   /* Border halus menyala */
+    box-shadow: 0 0 8px rgba(137, 180, 250, 0.3);
+}
